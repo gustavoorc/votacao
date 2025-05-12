@@ -6,7 +6,7 @@ public record TopicRequestRecord(
          String title,
          String description,
          String creator,
-         LocalDateTime votingStart,
-         LocalDateTime votingEnd
+         LocalDateTime startVotation,
+         LocalDateTime endVotation
 ) {
 }
