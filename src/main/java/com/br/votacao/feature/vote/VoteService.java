@@ -2,6 +2,7 @@ package com.br.votacao.feature.vote;
 
 import com.br.votacao.core.exception.VotacaoException;
 import com.br.votacao.feature.topic.TopicRepository;
+import com.br.votacao.integration.client.CpfClient;
 import com.br.votacao.shared.persistence.enums.VoteEnum;
 import com.br.votacao.shared.persistence.model.Topic;
 import com.br.votacao.shared.persistence.model.Vote;
@@ -18,12 +19,17 @@ public class VoteService {
 
     private  final TopicRepository topicRepository;
 
+    private final CpfClient client;
+
 
 
 
 
     @Transactional
     public void registerVote(Long idTopic, Vote voteEntity){
+
+        client.validateCPF(voteEntity.getCpfAssociate());
+
         voteRepository.findByAssociateIdAndTopicId(voteEntity.getAssociateId(), idTopic)
                 .ifPresent(e -> {throw  new VotacaoException("Associado já votou nesta pauta.");});
 

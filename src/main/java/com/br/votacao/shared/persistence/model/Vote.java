@@ -18,6 +18,8 @@ public class Vote {
 
     private String associateId;
 
+    private String cpfAssociate;
+
     @Enumerated(EnumType.STRING)
     private VoteEnum voteValue;
 
