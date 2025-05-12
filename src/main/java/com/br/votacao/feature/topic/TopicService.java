@@ -10,18 +10,21 @@ import com.br.votacao.shared.persistence.model.Topic;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class TopicService {
 
     private final TopicRepository topicRepository;
 
 
     private final TopicResponseMapper topicResponseMapper;
+
 
 
     public TopicResponseRecord createTopic(Topic topicEntity){

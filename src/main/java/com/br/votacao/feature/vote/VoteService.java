@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class VoteService {
     private  final VoteRepository  voteRepository;
 
@@ -25,7 +26,6 @@ public class VoteService {
 
 
 
-    @Transactional
     public void registerVote(Long idTopic, Vote voteEntity){
 
         client.validateCPF(voteEntity.getCpfAssociate());
