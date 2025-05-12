@@ -14,6 +14,9 @@ public record TopicResponseRecord(
          LocalDateTime endVotation,
          StatusEnum status,
          Integer yesVotes,
+
+         Integer totalVotes,
+
          Integer noVotes,
          String result
 ) {

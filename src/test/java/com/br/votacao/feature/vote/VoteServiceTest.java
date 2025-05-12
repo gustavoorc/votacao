@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.br.votacao.core.exception.VotacaoException;
 import com.br.votacao.feature.topic.TopicRepository;
+import com.br.votacao.integration.client.CpfClient;
 import com.br.votacao.shared.persistence.enums.VoteEnum;
 import com.br.votacao.shared.persistence.model.Topic;
 import com.br.votacao.shared.persistence.model.Vote;
@@ -23,6 +24,9 @@ public class VoteServiceTest {
     @Mock
     private TopicRepository topicRepository;
 
+    @Mock
+    private CpfClient cpfClient;
+
     @InjectMocks
     private VoteService voteService;
 
@@ -36,12 +40,14 @@ public class VoteServiceTest {
         Long topicId = 1L;
         Vote vote = new Vote();
         vote.setAssociateId("123L");
+        vote.setCpfAssociate("12312312312");
         vote.setVoteValue(VoteEnum.YES);
 
         Topic topic = new Topic();
         topic.setId(topicId);
         topic.setYesVotes(5);
         topic.setNoVotes(2);
+        topic.setTotalVotes(7);
 
         when(voteRepository.findByAssociateIdAndTopicId(any(), anyLong()))
                 .thenReturn(Optional.empty());

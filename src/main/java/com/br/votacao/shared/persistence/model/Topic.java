@@ -29,6 +29,7 @@ public class Topic {
     private LocalDateTime endVotation;
     private Integer yesVotes = 0;
     private Integer noVotes = 0;
+    private Integer totalVotes = 0;
     private String result = "Pending";
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
     private List<Vote> votes;

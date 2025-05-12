@@ -41,7 +41,9 @@ public class VoteService {
             topic.setNoVotes(topic.getNoVotes() + 1);
         }
 
+        topic.setTotalVotes(topic.getTotalVotes() + 1);
         voteEntity.setTopic(topic);
+
 
         voteRepository.save(voteEntity);
         topicRepository.save(topic);
